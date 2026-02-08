@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Positions - ReachGTM</title>
+    <meta name="description" content="Join ReachGTM. Explore our current job openings and grow your career with us.">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="index.html" class="logo">ReachGTM</a>
+                <button class="mobile-menu-toggle" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" onclick="closeMenu()">Home</a></li>
+                    <li><a href="hiring-solutions.html" onclick="closeMenu()">Hiring Solutions</a></li>
+                    <li><a href="outsourcing-solutions.html" onclick="closeMenu()">Outsourcing Solutions</a></li>
+                    <li><a href="about.html" onclick="closeMenu()">About Us</a></li>
+                    <li><a href="why-reachgtm.html" onclick="closeMenu()">Why ReachGTM</a></li>
+                    <li><a href="industries.html" onclick="closeMenu()">Industries</a></li>
+                    <li><a href="careers.html" onclick="closeMenu()">Careers</a></li>
+                    <li><a href="contact.html" class="cta-btn" onclick="closeMenu()">Talk to an Expert</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Open Positions</h1>
+            <p>Join our team and help businesses scale through global talent solutions.</p>
+        </div>
+    </section>
+
+    <!-- Jobs Listing -->
+    <section class="content-section">
+        <div class="container">
+            <div id="jobs-container">
+                <!-- Jobs will be loaded here dynamically -->
+                <div class="loading-message">
+                    <p>Loading open positions...</p>
+                </div>
+            </div>
+
+            <!-- No Jobs Message (hidden by default) -->
+            <div id="no-jobs-message" style="display: none;">
+                <div class="status-message">
+                    <p>We currently have no open positions, but we're always looking for talented professionals. Please submit your resume through our <a href="careers.html" style="color: var(--accent-color);">Careers page</a> for future opportunities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>ReachGTM</h3>
+                    <p>Reach Your Growth Goals with Global Talent.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="hiring-solutions.html">Hiring Solutions</a></li>
+                            <li><a href="outsourcing-solutions.html">Outsourcing Solutions</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="why-reachgtm.html">Why ReachGTM</a></li>
+                            <li><a href="industries.html">Industries</a></li>
+                            <li><a href="careers.html">Careers</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <ul>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Follow Us</h4>
+                        <a href="https://www.linkedin.com/company/reachgtm/" target="_blank" rel="noopener noreferrer" class="footer-social-link">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ReachGTM. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functions
+        function toggleMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.remove('active');
+        }
+
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('navMenu');
+            const navbar = document.querySelector('.navbar');
+            
+            if (!navbar.contains(event.target)) {
+                menu.classList.remove('active');
+            }
+        });
+
+        // Load jobs from content folder
+        async function loadJobs() {
+            const jobsContainer = document.getElementById('jobs-container');
+            const noJobsMessage = document.getElementById('no-jobs-message');
+            
+            try {
+                // This will be populated by Netlify CMS
+                // For now, we'll check if content/jobs exists
+                const response = await fetch('/content/jobs/jobs-list.json');
+                
+                if (response.ok) {
+                    const jobs = await response.json();
+                    
+                    if (jobs.length === 0) {
+                        jobsContainer.style.display = 'none';
+                        noJobsMessage.style.display = 'block';
+                        return;
+                    }
+                    
+                    jobsContainer.innerHTML = '';
+                    
+                    jobs.forEach(job => {
+                        if (job.active) {
+                            const jobCard = createJobCard(job);
+                            jobsContainer.innerHTML += jobCard;
+                        }
+                    });
+                } else {
+                    // No jobs yet, show message
+                    jobsContainer.style.display = 'none';
+                    noJobsMessage.style.display = 'block';
+                }
+            } catch (error) {
+                // If jobs folder doesn't exist yet, show no jobs message
+                jobsContainer.style.display = 'none';
+                noJobsMessage.style.display = 'block';
+            }
+        }
+
+        function createJobCard(job) {
+            return `
+                <div class="job-card">
+                    <div class="job-header">
+                        <h3>${job.title}</h3>
+                        <div class="job-meta">
+                            <span class="job-badge">${job.jobType}</span>
+                            <span class="job-badge">${job.department}</span>
+                        </div>
+                    </div>
+                    <div class="job-details">
+                        <p><strong>📍 Location:</strong> ${job.location}</p>
+                        <p><strong>📊 Experience:</strong> ${job.experience}</p>
+                        ${job.salary ? `<p><strong>💰 Salary:</strong> ${job.salary}</p>` : ''}
+                    </div>
+                    <div class="job-description">
+                        ${job.description ? `<p>${job.description.substring(0, 200)}...</p>` : ''}
+                    </div>
+                    <a href="job-details.html?id=${job.slug}" class="btn-secondary">View Details & Apply</a>
+                </div>
+            `;
+        }
+
+        // Load jobs when page loads
+        document.addEventListener('DOMContentLoaded', loadJobs);
+    </script>
+
+    <style>
+        .loading-message {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+        }
+
+        .job-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .job-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+
+        .job-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .job-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .job-meta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .job-badge {
+            background-color: var(--secondary-bg);
+            color: var(--accent-color);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .job-details {
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            background-color: var(--secondary-bg);
+            border-radius: 8px;
+        }
+
+        .job-details p {
+            margin: 0.5rem 0;
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .job-description {
+            margin: 1.5rem 0;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .job-card .btn-secondary {
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 640px) {
+            .job-card {
+                padding: 1.5rem;
+            }
+
+            .job-header h3 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</body>
+</html>

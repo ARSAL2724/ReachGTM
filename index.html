@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReachGTM - Hire & Scale with Global Talent</title>
+    <meta name="description" content="ReachGTM helps startups, SMBs, and enterprises scale faster through global hiring solutions and end-to-end outsourcing services.">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="index.html" class="logo">ReachGTM</a>
+                <button class="mobile-menu-toggle" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" onclick="closeMenu()">Home</a></li>
+                    <li><a href="hiring-solutions.html" onclick="closeMenu()">Hiring Solutions</a></li>
+                    <li><a href="outsourcing-solutions.html" onclick="closeMenu()">Outsourcing Solutions</a></li>
+                    <li><a href="about.html" onclick="closeMenu()">About Us</a></li>
+                    <li><a href="why-reachgtm.html" onclick="closeMenu()">Why ReachGTM</a></li>
+                    <li><a href="industries.html" onclick="closeMenu()">Industries</a></li>
+                    <li><a href="careers.html" onclick="closeMenu()">Careers</a></li>
+                    <li><a href="contact.html" class="cta-btn" onclick="closeMenu()">Talk to an Expert</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.remove('active');
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('navMenu');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+            const navbar = document.querySelector('.navbar');
+            
+            if (!navbar.contains(event.target)) {
+                menu.classList.remove('active');
+            }
+        });
+    </script>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Hire & Scale with Global Talent — In Days, Not Months</h1>
+                <p class="hero-subtitle">From flexible hiring to full outsourcing, ReachGTM helps you build world-class teams and execute projects faster—while optimizing operational costs.</p>
+                <a href="contact.html" class="btn-primary">Talk to an Expert</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hiring Solutions Overview -->
+    <section class="solutions-overview">
+        <div class="container">
+            <div class="solution-card">
+                <div class="solution-content">
+                    <h2>Hiring Solutions</h2>
+                    <p>Access pre-vetted global talent through flexible engagement models. Whether you need onsite, offshore, hybrid, or remote professionals, we deliver the right people for your team in days.</p>
+                    <ul class="solution-highlights">
+                        <li>Temp-to-Perm, Permanent, and On-Demand hiring</li>
+                        <li>C2C and W2 engagement options</li>
+                        <li>Compliance-friendly hiring across regions</li>
+                        <li>Fast turnaround and quality assurance</li>
+                    </ul>
+                    <a href="hiring-solutions.html" class="btn-secondary">Learn More About Hiring</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Outsourcing Solutions Overview -->
+    <section class="solutions-overview alt">
+        <div class="container">
+            <div class="solution-card">
+                <div class="solution-content">
+                    <h2>Outsourcing Solutions</h2>
+                    <p>Let ReachGTM become your execution partner. From dedicated teams to fully managed services, we handle everything—so you can focus on growth, not overhead.</p>
+                    <ul class="solution-highlights">
+                        <li>Dedicated teams for sales, support, and development</li>
+                        <li>Project-based delivery and managed services</li>
+                        <li>End-to-end operations management</li>
+                        <li>Up to 70% annual cost savings</li>
+                    </ul>
+                    <a href="outsourcing-solutions.html" class="btn-secondary">Learn More About Outsourcing</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Talent Reach -->
+    <section class="global-reach">
+        <div class="container">
+            <h2>Global Talent Reach</h2>
+            <p class="section-subtitle">Access skilled professionals across multiple continents and time zones</p>
+            <div class="reach-grid">
+                <div class="reach-item">
+                    <h3>North America</h3>
+                    <p>US, Canada, Mexico</p>
+                </div>
+                <div class="reach-item">
+                    <h3>Asia Pacific</h3>
+                    <p>India, Pakistan, Philippines</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Speed of Delivery -->
+    <section class="speed-delivery">
+        <div class="container">
+            <h2>Speed of Delivery</h2>
+            <div class="speed-content">
+                <div class="speed-stat">
+                    <div class="stat-number">5-7</div>
+                    <div class="stat-label">Days to First Candidate</div>
+                </div>
+                <div class="speed-stat">
+                    <div class="stat-number">10-15</div>
+                    <div class="stat-label">Days to Team Deployment</div>
+                </div>
+                <div class="speed-stat">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Pre-Vetted Talent</div>
+                </div>
+            </div>
+            <p class="speed-description">While competitors take weeks or months, ReachGTM delivers qualified talent in days—without compromising quality.</p>
+        </div>
+    </section>
+
+    <!-- Cost Advantage -->
+    <section class="cost-advantage">
+        <div class="container">
+            <h2>Cost Advantage</h2>
+            <div class="cost-grid">
+                <div class="cost-card">
+                    <h3>Outsourcing Solutions</h3>
+                    <p class="cost-highlight">Up to 70% Annual Savings</p>
+                    <p>Our fully managed outsourcing services deliver significant cost reductions compared to traditional in-house teams. We handle recruitment, operations, and delivery—you get results without overhead.</p>
+                </div>
+                <div class="cost-card">
+                    <h3>Hiring Solutions</h3>
+                    <p class="cost-highlight">Flexible Pricing</p>
+                    <p>Hiring costs vary based on role, region, and engagement model. We optimize your talent acquisition while maintaining quality and compliance across all hiring options.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Slider -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>What Our Clients Say</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial-track">
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="testimonial-text">"ReachGTM helped us scale our engineering team in under two weeks. The quality of talent and speed of delivery exceeded our expectations."</p>
+                        <p class="testimonial-author">Sarah Johnson</p>
+                        <p class="testimonial-role">CTO, TechVision Solutions</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="testimonial-text">"We saved over 60% on operational costs by partnering with ReachGTM for our customer support operations. Professional, reliable, and results-driven."</p>
+                        <p class="testimonial-author">Michael Chen</p>
+                        <p class="testimonial-role">VP Operations, CloudScale Inc</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★☆</div>
+                        <p class="testimonial-text">"The flexibility to scale our sales team up or down based on demand has been a game-changer. ReachGTM makes global hiring simple."</p>
+                        <p class="testimonial-author">Amanda Rodriguez</p>
+                        <p class="testimonial-role">Head of Sales, GrowthMetrics</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="testimonial-text">"From temp-to-perm to dedicated teams, ReachGTM has been our go-to partner for talent. They understand our business and deliver every time."</p>
+                        <p class="testimonial-author">David Kim</p>
+                        <p class="testimonial-role">CEO, DataFlow Systems</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="testimonial-text">"Their project-based outsourcing model allowed us to launch our new platform 3 months ahead of schedule. Exceptional execution."</p>
+                        <p class="testimonial-author">Jennifer Martinez</p>
+                        <p class="testimonial-role">Product Director, InnovateSaaS</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★☆</div>
+                        <p class="testimonial-text">"We found specialized developers through ReachGTM in just 5 days. Their pre-vetting process is thorough and saves us significant time."</p>
+                        <p class="testimonial-author">Robert Thompson</p>
+                        <p class="testimonial-role">Engineering Lead, FinTech Labs</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="testimonial-text">"ReachGTM manages our entire back-office operations. The cost savings and efficiency gains have been transformative for our business."</p>
+                        <p class="testimonial-author">Lisa Wang</p>
+                        <p class="testimonial-role">CFO, Enterprise Solutions Group</p>
+                    </div>
+                    <!-- Duplicate for seamless loop -->
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="testimonial-text">"ReachGTM helped us scale our engineering team in under two weeks. The quality of talent and speed of delivery exceeded our expectations."</p>
+                        <p class="testimonial-author">Sarah Johnson</p>
+                        <p class="testimonial-role">CTO, TechVision Solutions</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="testimonial-text">"We saved over 60% on operational costs by partnering with ReachGTM for our customer support operations. Professional, reliable, and results-driven."</p>
+                        <p class="testimonial-author">Michael Chen</p>
+                        <p class="testimonial-role">VP Operations, CloudScale Inc</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Ready to Scale Your Team?</h2>
+            <p>Whether you need to hire fast or outsource entire operations, ReachGTM delivers the talent and execution you need to grow.</p>
+            <a href="contact.html" class="btn-primary">Talk to an Expert</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>ReachGTM</h3>
+                    <p>Reach Your Growth Goals with Global Talent.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="hiring-solutions.html">Hiring Solutions</a></li>
+                            <li><a href="outsourcing-solutions.html">Outsourcing Solutions</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="why-reachgtm.html">Why ReachGTM</a></li>
+                            <li><a href="industries.html">Industries</a></li>
+                            <li><a href="careers.html">Careers</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <ul>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Follow Us</h4>
+                        <a href="https://www.linkedin.com/company/reachgtm/" target="_blank" rel="noopener noreferrer" class="footer-social-link">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ReachGTM. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

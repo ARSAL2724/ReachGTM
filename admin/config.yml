@@ -1,0 +1,175 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  # Job Postings
+  - name: "jobs"
+    label: "Job Postings"
+    folder: "content/jobs"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Job Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Location", name: "location", widget: "string", default: "Remote"}
+      - {label: "Job Type", name: "jobType", widget: "select", options: ["Full-time", "Part-time", "Contract", "Temporary"]}
+      - {label: "Department", name: "department", widget: "select", options: ["Sales", "Engineering", "Customer Support", "Operations", "Marketing", "Human Resources"]}
+      - {label: "Experience Level", name: "experience", widget: "select", options: ["Entry Level", "Mid Level", "Senior Level", "Executive"]}
+      - {label: "Salary Range (Optional)", name: "salary", widget: "string", required: false}
+      - {label: "Description", name: "description", widget: "markdown"}
+      - {label: "Responsibilities", name: "responsibilities", widget: "markdown"}
+      - {label: "Requirements", name: "requirements", widget: "markdown"}
+      - {label: "Benefits (Optional)", name: "benefits", widget: "markdown", required: false}
+      - {label: "Active", name: "active", widget: "boolean", default: true}
+
+  # Testimonials
+  - name: "testimonials"
+    label: "Testimonials"
+    folder: "content/testimonials"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Client Name", name: "name", widget: "string"}
+      - {label: "Job Title", name: "title", widget: "string"}
+      - {label: "Company", name: "company", widget: "string"}
+      - {label: "Rating", name: "rating", widget: "select", options: ["5", "4", "3"]}
+      - {label: "Testimonial Text", name: "text", widget: "text"}
+      - {label: "Active", name: "active", widget: "boolean", default: true}
+
+  # Page Content
+  - name: "pages"
+    label: "Page Content"
+    files:
+      # Home Page
+      - label: "Home Page"
+        name: "home"
+        file: "content/pages/home.json"
+        fields:
+          - {label: "Hero Headline", name: "heroHeadline", widget: "string"}
+          - {label: "Hero Subheadline", name: "heroSubheadline", widget: "text"}
+          - {label: "CTA Button Text", name: "ctaText", widget: "string", default: "Talk to an Expert"}
+          - label: "Speed Stats"
+            name: "speedStats"
+            widget: "object"
+            fields:
+              - {label: "Days to First Candidate", name: "firstCandidate", widget: "string", default: "5-7"}
+              - {label: "Days to Team Deployment", name: "teamDeployment", widget: "string", default: "10-15"}
+          - label: "Global Reach"
+            name: "globalReach"
+            widget: "list"
+            fields:
+              - {label: "Region Name", name: "region", widget: "string"}
+              - {label: "Countries", name: "countries", widget: "string"}
+      
+      # About Page
+      - label: "About Us Page"
+        name: "about"
+        file: "content/pages/about.json"
+        fields:
+          - {label: "Page Title", name: "title", widget: "string", default: "About ReachGTM"}
+          - {label: "Page Subtitle", name: "subtitle", widget: "text"}
+          - {label: "Who We Are", name: "whoWeAre", widget: "markdown"}
+          - {label: "Our Mission", name: "mission", widget: "markdown"}
+          - {label: "Our Vision", name: "vision", widget: "markdown"}
+      
+      # Why ReachGTM Page
+      - label: "Why ReachGTM Page"
+        name: "why"
+        file: "content/pages/why.json"
+        fields:
+          - {label: "Page Title", name: "title", widget: "string"}
+          - {label: "Page Subtitle", name: "subtitle", widget: "text"}
+          - label: "Differentiators"
+            name: "differentiators"
+            widget: "list"
+            fields:
+              - {label: "Icon", name: "icon", widget: "string"}
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+      
+      # Services - Hiring
+      - label: "Hiring Solutions Page"
+        name: "hiring"
+        file: "content/pages/hiring.json"
+        fields:
+          - {label: "Page Title", name: "title", widget: "string"}
+          - {label: "Page Subtitle", name: "subtitle", widget: "text"}
+          - {label: "Overview Text", name: "overview", widget: "markdown"}
+          - label: "Hiring Models"
+            name: "hiringModels"
+            widget: "list"
+            fields:
+              - {label: "Model Name", name: "name", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+      
+      # Services - Outsourcing
+      - label: "Outsourcing Solutions Page"
+        name: "outsourcing"
+        file: "content/pages/outsourcing.json"
+        fields:
+          - {label: "Page Title", name: "title", widget: "string"}
+          - {label: "Page Subtitle", name: "subtitle", widget: "text"}
+          - {label: "Overview Text", name: "overview", widget: "markdown"}
+          - {label: "Cost Savings Percentage", name: "savingsPercent", widget: "string", default: "70"}
+      
+      # Industries Page
+      - label: "Industries Page"
+        name: "industries"
+        file: "content/pages/industries.json"
+        fields:
+          - {label: "Page Title", name: "title", widget: "string"}
+          - {label: "Page Subtitle", name: "subtitle", widget: "text"}
+          - label: "Industries"
+            name: "industries"
+            widget: "list"
+            fields:
+              - {label: "Industry Name", name: "name", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+
+  # Site Settings
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - label: "General Settings"
+        name: "general"
+        file: "content/settings/general.json"
+        fields:
+          - {label: "Company Name", name: "companyName", widget: "string", default: "ReachGTM"}
+          - {label: "Tagline", name: "tagline", widget: "string", default: "Reach Your Growth Goals with Global Talent."}
+          - {label: "LinkedIn URL", name: "linkedin", widget: "string"}
+          - {label: "Form Endpoint", name: "formEndpoint", widget: "string", default: "https://formspree.io/f/xvzbogok"}
+          - {label: "Response Time Message", name: "responseMessage", widget: "string", default: "We respond within 24 hours."}
+          - {label: "Copyright Year", name: "copyrightYear", widget: "string", default: "2024"}
+      
+      - label: "Navigation Menu"
+        name: "navigation"
+        file: "content/settings/navigation.json"
+        fields:
+          - label: "Menu Items"
+            name: "menuItems"
+            widget: "list"
+            fields:
+              - {label: "Label", name: "label", widget: "string"}
+              - {label: "Link", name: "link", widget: "string"}
+              - {label: "Show in Menu", name: "visible", widget: "boolean", default: true}
+      
+      - label: "Contact Form"
+        name: "contact"
+        file: "content/settings/contact.json"
+        fields:
+          - {label: "Form Title", name: "title", widget: "string"}
+          - {label: "Form Description", name: "description", widget: "text"}
+          - {label: "Submit Button Text", name: "submitText", widget: "string", default: "Send Message"}
+          - {label: "Success Message", name: "successMessage", widget: "string"}
+      
+      - label: "Careers Page"
+        name: "careers"
+        file: "content/settings/careers.json"
+        fields:
+          - {label: "Hiring Status Message", name: "statusMessage", widget: "text"}
+          - {label: "Show Resume Form", name: "showResumeForm", widget: "boolean", default: true}
+          - {label: "Form Note", name: "formNote", widget: "text"}
