@@ -46,7 +46,7 @@
         <div class="container">
             <p style="text-align: center; max-width: 700px; margin: 0 auto 3rem; font-size: 1.15rem; color: var(--text-secondary);">Whether you need to hire fast or outsource entire operations, our team is ready to help. Fill out the form below and we'll get back to you within 24 hours.</p>
 
-            <form class="contact-form" action="https://formspree.io/f/xvzbogok" method="POST">
+            <form class="contact-form" id="contactForm">
                 <div class="form-group">
                     <label for="name">Full Name *</label>
                     <input type="text" id="name" name="name" required>
@@ -158,5 +158,31 @@
             }
         });
     </script>
+    <script>
+document.getElementById("contactForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const formData = new FormData(form);
+
+  try {
+    const response = await fetch("/.netlify/functions/submit-form", {
+      method: "POST",
+      body: formData
+    });
+
+    const result = await response.json();
+
+    if (response.ok) {
+      alert("Thank you! Your message has been sent.");
+      form.reset();
+    } else {
+      alert(result.error || "Something went wrong. Please try again.");
+    }
+  } catch (error) {
+    alert("Network error. Please try again.");
+  }
+});
+</script>
 </body>
 </html>
