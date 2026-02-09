@@ -1,7 +1,7 @@
 import nodemailer from "nodemailer";
 
 export async function handler(event) {
-  // Allow only POST requests
+  // Only allow POST
   if (event.httpMethod !== "POST") {
     return {
       statusCode: 405,
@@ -10,7 +10,7 @@ export async function handler(event) {
   }
 
   try {
-    // Parse form data correctly
+    // Parse form data
     const params = new URLSearchParams(event.body);
 
     const name = params.get("name");
@@ -20,21 +20,21 @@ export async function handler(event) {
     const interest = params.get("interest");
     const message = params.get("message");
 
-    // Create SMTP transporter (Gmail)
+    // Create transporter
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,      // smtp.gmail.com
-      port: process.env.SMTP_PORT,      // 465
-      secure: true,                     // REQUIRED for Gmail
+      host: process.env.SMTP_HOST,
+      port: Number(process.env.SMTP_PORT),
+      secure: false, // Gmail uses STARTTLS
       auth: {
-        user: process.env.SMTP_USER,    // your Gmail address
-        pass: process.env.SMTP_PASS,    // Gmail App Password
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
       },
     });
 
     // Send email
     await transporter.sendMail({
       from: `"ReachGTM Website" <${process.env.SMTP_USER}>`,
-      to: process.env.SMTP_USER, // you receive the email
+      to: process.env.SMTP_USER,
       replyTo: email,
       subject: "New Contact Form Submission",
       html: `
@@ -44,7 +44,7 @@ export async function handler(event) {
         <p><strong>Company:</strong> ${company}</p>
         <p><strong>Phone:</strong> ${phone}</p>
         <p><strong>Interest:</strong> ${interest}</p>
-        <p><strong>Message:</strong><br/>${message}</p>
+        <p><strong>Message:</strong><br>${message}</p>
       `,
     });
 
@@ -52,10 +52,8 @@ export async function handler(event) {
       statusCode: 200,
       body: JSON.stringify({ success: true }),
     };
-
   } catch (error) {
     console.error("Email error:", error);
-
     return {
       statusCode: 500,
       body: JSON.stringify({ error: "Email failed" }),
